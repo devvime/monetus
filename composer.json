@@ -23,6 +23,7 @@
         "PHP": "^8.2.0",
         "devvime/modularis": "^1.0",
         "catfan/medoo": "^2.2",
-        "robmorgan/phinx": "^0.16.9"
+        "robmorgan/phinx": "^0.16.9",
+        "firebase/php-jwt": "^6.11"
     }
 }

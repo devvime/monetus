@@ -15,4 +15,9 @@ class ViewController
     {
         View::render('login/index');
     }
+
+    public function dashboard($request, $response)
+    {
+        View::render('dashboard/index');
+    }
 }

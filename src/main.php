@@ -1,11 +1,10 @@
 <?php
 
 use Modularis\Router;
-use Monetus\Controllers\ViewController;
 
 $route = new Router();
 
-$route->get('/', ViewController::class . '@home');
-$route->get('/login', ViewController::class . '@login');
+require_once dirname(__DIR__) . '/src/Routes/view.php';
+require_once dirname(__DIR__) . '/src/Routes/api.php';
 
 $route->dispatch();

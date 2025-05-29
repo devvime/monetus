@@ -18,4 +18,9 @@ class Database
             'password' => DATABASE_PASSWORD
         ]);
     }
+
+    public function connect()
+    {
+        return $this->db;
+    }
 }
