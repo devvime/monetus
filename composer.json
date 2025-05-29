@@ -1,0 +1,28 @@
+{
+    "name": "devvime/monetus",
+    "description": "PHP project for financial control",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Monetus\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "devvime",
+            "email": "contato@estilodev.com.br"
+        }
+    ],
+    "scripts": {
+        "migration:create": "vendor/bin/phinx create",
+        "seed:create": "vendor/bin/phinx seed:create",
+        "migrate": "vendor/bin/phinx migrate",
+        "migrate:seed": "vendor/bin/phinx seed:run"
+    },
+    "require": {
+        "PHP": "^8.2.0",
+        "devvime/modularis": "^1.0",
+        "catfan/medoo": "^2.2",
+        "robmorgan/phinx": "^0.16.9"
+    }
+}

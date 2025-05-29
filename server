@@ -1,0 +1,7 @@
+<?php
+
+echo "Init Server... \n";
+
+sleep(0.5);
+
+system("php -S localhost:8080 -t public");
