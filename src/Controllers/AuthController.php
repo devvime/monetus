@@ -4,13 +4,15 @@ namespace Monetus\Controllers;
 
 use Monetus\Services\UserService;
 use Monetus\DTOs\RegisterUserDTO;
+use Monetus\DTOs\AuthDTO;
+use Monetus\Services\AuthService;
 
 class AuthController
 {
-    public function login($request, $response)
+    public function auth($request, $response)
     {
-        $email = $request->body->email;
-        $password = $request->body->password;
+        AuthDTO::validate($request->body);
+        AuthService::auth($request, $response);
     }
 
     public function register($request, $response)

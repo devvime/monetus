@@ -1,5 +1,15 @@
 <?php
 
+session_set_cookie_params([
+    'lifetime' => 0,
+    'secure' => true,
+    'httponly' => true,
+    'samesite' => 'Strict'
+]);
+
+session_start();
+session_regenerate_id(true);
+
 $dotenv = Dotenv\Dotenv::createImmutable(dirname(dirname(__DIR__)))->load();
 
 define('DATABASE_SERVER', $_ENV['DATABASE_SERVER']);

@@ -27,7 +27,7 @@ class DTO
 
     public static function obstruct(string $input_name, string | null $input_value)
     {
-        if ($input_value !== null) {
+        if (isset($input_value) && $input_value !== null) {
             self::blockMessage(400, "{$input_name} is not valid!");
         }
     }

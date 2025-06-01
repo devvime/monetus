@@ -5,7 +5,7 @@ POST {{baseURL}}/api/register
 Content-Type: application/json
 
 {
-    "name": "test",
-    "email": "steve@pm.com",
-    "password": "steve_boladão"
+    "name": "Jakie Chan",
+    "email": "jakie@chan.com",
+    "password": "karatekid"
 }
