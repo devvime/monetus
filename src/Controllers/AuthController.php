@@ -2,7 +2,8 @@
 
 namespace Monetus\Controllers;
 
-use Monetus\Database\Database;
+use Monetus\Services\UserService;
+use Monetus\DTOs\RegisterUserDTO;
 
 class AuthController
 {
@@ -10,8 +11,11 @@ class AuthController
     {
         $email = $request->body->email;
         $password = $request->body->password;
+    }
 
-        $db = new Database();
-
+    public function register($request, $response)
+    {
+        RegisterUserDTO::validate($request->body);
+        UserService::registerUser($request, $response);
     }
 }

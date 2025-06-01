@@ -1,9 +1,10 @@
 <?php
 
-const DATABASE_SERVER = 'localhost';
-const DATABASE_TYPE = 'mysql';
-const DATABASE_NAME = 'base_monetus';
-const DATABASE_USER = 'beekeeper';
-const DATABASE_PASSWORD = 'beekeeper';
+$dotenv = Dotenv\Dotenv::createImmutable(dirname(dirname(__DIR__)))->load();
 
-const SECRET = 'ioksnjat8o687v4_\/((&$#$$#87t9*/*/*845944NBY¨R%%$$vdv++_|_!%@#';
+define('DATABASE_SERVER', $_ENV['DATABASE_SERVER']);
+define('DATABASE_TYPE', $_ENV['DATABASE_TYPE']);
+define('DATABASE_NAME', $_ENV['DATABASE_NAME']);
+define('DATABASE_USER', $_ENV['DATABASE_USER']);
+define('DATABASE_PASSWORD', $_ENV['DATABASE_PASSWORD']);
+define('SECRET', $_ENV['SECRET']);
