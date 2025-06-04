@@ -18,8 +18,6 @@ class DTO
 
     public static function isEmail(string $name, string | null $email)
     {
-        self::required($name, $email);
-
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             self::blockMessage(400, "{$name} is not valid email!");
         }

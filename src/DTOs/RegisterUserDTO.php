@@ -13,6 +13,7 @@ class RegisterUserDTO extends DTO
     public static function validate(array | object $data)
     {
         self::required('name', $data->name);
+        self::required('email', $data->email);
         self::isEmail('Email', $data->email);
         self::required('password', $data->password);
         self::obstruct('super_user', $data->super_user);

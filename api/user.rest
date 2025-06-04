@@ -1,0 +1,26 @@
+### List all users
+GET {{baseURL}}/api/user
+
+### List user by ID
+GET {{baseURL}}/api/user/7
+
+### Register new user
+POST {{baseURL}}/api/user
+Content-Type: application/json
+
+{
+    "name": "Vegeta",
+    "email": "vegeta@ssj.com",
+    "password": "karatekid"
+}
+
+### Update user
+PUT {{baseURL}}/api/user/7
+Content-Type: application/json
+
+{
+    "email": "ssj@vegeta.com"
+}
+
+### Delete user
+DELETE {{baseURL}}/api/user/7
