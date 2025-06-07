@@ -1,8 +1,12 @@
 <?php
 
 use Monetus\Controllers\ViewController;
-use Monetus\Middlewares\AuthMiddleware;
+use Monetus\Guards\AuthGuard;
 
 $route->get('/', ViewController::class . '@home');
 $route->get('/login', ViewController::class . '@login');
-$route->get('/dashboard', ViewController::class . '@dashboard', AuthMiddleware::class . '@verify');
+
+$route->group('/dashboard', AuthGuard::class . '@verify')
+    ->init()
+    ->get('', ViewController::class . '@dashboard')
+    ->endGroup();
