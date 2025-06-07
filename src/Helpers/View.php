@@ -6,9 +6,10 @@ class View
 {
     public static function render(string $name)
     {
-        include dirname(__DIR__) . '/Views/header.php';
+        $view = new View();
+        include dirname(__DIR__) . '/Views/layout/header.php';
         include dirname(__DIR__) . "/Views/{$name}.php";
-        include dirname(__DIR__) . '/Views/footer.php';
+        include dirname(__DIR__) . '/Views/layout/footer.php';
     }
 
     public static function add(string $name)

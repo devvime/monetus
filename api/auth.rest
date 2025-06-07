@@ -1,0 +1,8 @@
+### Login
+POST {{baseURL}}/api/auth
+Content-Type: application/json
+
+{
+    "email": "jakie@chan.com",
+    "password": "karatekid"
+}

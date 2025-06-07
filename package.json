@@ -1,0 +1,12 @@
+{
+  "scripts": {
+    "dev": "esbuild src/Views/index.js --bundle --minify --target=es2015 --outfile=public/js/index.js --watch"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.5"
+  },
+  "dependencies": {
+    "page": "^1.11.6",
+    "sweetalert2": "^11.22.0"
+  }
+}

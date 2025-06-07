@@ -1,0 +1,13 @@
+<nav class="navbar navbar-expand-lg bg-black">
+    <div class="container">
+        <a class="navbar-brand text-white " href="/dashboard"><i class="bi bi-cup-hot-fill"></i> Home</a>
+        <div class="collapse navbar-collapse">
+            <div class="navbar-nav">
+                <a class="nav-link text-white" href="/dashboard/users"><i class="bi bi-people-fill"></i> Users</a>
+                <button class="nav-link text-danger" id="logout-btn">
+                    <i class="bi bi-box-arrow-left"></i> Exit
+                </button>
+            </div>
+        </div>
+    </div>
+</nav>

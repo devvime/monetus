@@ -20,4 +20,9 @@ class AuthController
         RegisterUserDTO::validate($request->body);
         UserService::registerUser($request, $response);
     }
+
+    public function logout($request, $response)
+    {
+        AuthService::logout($request, $response);
+    }
 }

@@ -1,4 +1,6 @@
-<section class="py-5">
+<?= $view->add('dashboard/menu/index'); ?>
+
+<section class="py-5 text-light">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">

@@ -22,6 +22,7 @@ class AuthService
 
             if ($user === null) {
                 $response->json([
+                    "error" => true,
                     "status" => 301,
                     "message" => "Email or password incorrect."
                 ]);
@@ -43,17 +44,22 @@ class AuthService
 
                 return;
             }
-
-            $response->json([
-                "status" => 301,
-                "message" => "Email or password incorrect."
-            ]);
-
         } catch (\Exception $e) {
             $response->json([
+                "error" => true,
                 "status" => 301,
                 "message" => "Email or password incorrect."
             ]);
         }
+    }
+
+    public static function logout($request, $response)
+    {
+        unset($_SESSION['user']);
+        session_destroy();
+        $response->json([
+            "success" => true,
+            "message" => "Logout successfully"
+        ]);
     }
 }

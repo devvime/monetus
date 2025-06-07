@@ -5,7 +5,8 @@ use Monetus\Controllers\UserController;
 use Monetus\Guards\AuthGuard;
 
 # Login routes
-$route->post('/api/login', AuthController::class . '@auth');
+$route->post('/api/auth', AuthController::class . '@auth');
+$route->post('/api/logout', AuthController::class . '@logout');
 $route->post('/api/register', AuthController::class . '@register');
 
 # User routes

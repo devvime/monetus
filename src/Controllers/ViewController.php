@@ -20,4 +20,9 @@ class ViewController
     {
         View::render('dashboard/index');
     }
+
+    public function users($request, $response)
+    {
+        View::render('users/list/index');
+    }
 }
