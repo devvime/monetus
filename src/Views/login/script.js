@@ -1,6 +1,8 @@
 import { api } from '../helpers/api.js';
 import Swal from 'sweetalert2';
 
+import { registerUser } from './registerModal/script.js';
+
 export function login(ctx, next) {
     const loginForm = document.querySelector('#loginForm');
     loginForm.addEventListener('submit', event => {
@@ -12,6 +14,7 @@ export function login(ctx, next) {
         };
         sendLogin(data)    
     });
+    registerUser();
 }
 
 async function sendLogin(data) {

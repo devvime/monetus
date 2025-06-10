@@ -13,11 +13,17 @@
                     <input class="form-control mb-2" type="email" name="email" placeholder="Email..." required>
                     <label>Password:</label>
                     <input class="form-control mb-2" type="password" name="password" placeholder="Password..." required>
+                    <hr>
+                    <div class="d-flex justify-content-end">
+                        <div class="content">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-success" id="registerFormBtn">
+                                <span class="spinner-border spinner-border-sm d-none" aria-hidden="true" id="loading_register_btn"></span>
+                                <span>Confirm</span>
+                            </button>
+                        </div>
+                    </div>
                 </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-success">Confirm</button>
             </div>
         </div>
     </div>

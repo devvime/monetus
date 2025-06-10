@@ -25,6 +25,8 @@ class ViewController
     public function users($request, $response)
     {
         $users = UserService::listAllUsers();
-        View::render('users/list/index', $users);
+        View::render('users/list/index', [
+            "users" => $users
+        ]);
     }
 }
