@@ -1,5 +1,16 @@
 <?php
 
+use Rain\Tpl;
+
+define('ROOT', dirname(dirname(__DIR__)));
+
+Tpl::configure([
+    "tpl_dir" => ROOT . '/src/Views/',
+    "cache_dir" => ROOT . '/public/cache/'
+]);
+
+define('VIEW', new Tpl);
+
 session_set_cookie_params([
     'lifetime' => 0,
     'secure' => true,
@@ -10,7 +21,11 @@ session_set_cookie_params([
 session_start();
 session_regenerate_id(true);
 
-$dotenv = Dotenv\Dotenv::createImmutable(dirname(dirname(__DIR__)))->load();
+try {
+    $dotenv = Dotenv\Dotenv::createImmutable(ROOT)->load();
+} catch (\Exception $error) {
+    echo ".env not found";
+}
 
 define('DATABASE_SERVER', $_ENV['DATABASE_SERVER']);
 define('DATABASE_TYPE', $_ENV['DATABASE_TYPE']);

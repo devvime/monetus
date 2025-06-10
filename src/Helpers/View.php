@@ -4,16 +4,18 @@ namespace Monetus\Helpers;
 
 class View
 {
-    public static function render(string $name)
+    public static function render(string $name, array $data = [])
     {
-        $view = new View();
-        include dirname(__DIR__) . '/Views/layout/header.php';
-        include dirname(__DIR__) . "/Views/{$name}.php";
-        include dirname(__DIR__) . '/Views/layout/footer.php';
+        self::setData($data);
+        VIEW->draw('layout/header');
+        VIEW->draw("$name");
+        VIEW->draw('layout/footer');
     }
 
-    public static function add(string $name)
+    public static function setData(array $data)
     {
-        include dirname(__DIR__) . "/Views/{$name}.php";
+        foreach ($data as $key => $value) {
+            VIEW->assign($key, $value);
+        }
     }
 }

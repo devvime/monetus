@@ -3,6 +3,7 @@
 namespace Monetus\Controllers;
 
 use Monetus\Helpers\View;
+use Monetus\Services\UserService;
 
 class ViewController
 {
@@ -23,6 +24,7 @@ class ViewController
 
     public function users($request, $response)
     {
-        View::render('users/list/index');
+        $users = UserService::listAllUsers();
+        View::render('users/list/index', $users);
     }
 }

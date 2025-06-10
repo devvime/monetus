@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5ae6a6b07afc69c52178b108dd5cf603",
+    "content-hash": "e96f9e08bcf4d87aeaa6478133b5bf62",
     "packages": [
         {
             "name": "cakephp/chronos",
@@ -937,6 +937,53 @@
                 "source": "https://github.com/php-fig/simple-cache/tree/3.0.0"
             },
             "time": "2021-10-29T13:26:27+00:00"
+        },
+        {
+            "name": "rain/raintpl",
+            "version": "3.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/feulf/raintpl3.git",
+                "reference": "edee683bf242f40cc75bee46a78759f6c1589dca"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/feulf/raintpl3/zipball/edee683bf242f40cc75bee46a78759f6c1589dca",
+                "reference": "edee683bf242f40cc75bee46a78759f6c1589dca",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "4.4.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Rain": "library/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Rain Community"
+                },
+                {
+                    "name": "Federico Ulfo",
+                    "email": "rainelemental@gmail.com"
+                }
+            ],
+            "description": "easy and fast template engine",
+            "homepage": "http://raintpl.com",
+            "support": {
+                "issues": "https://github.com/feulf/raintpl3/issues",
+                "source": "https://github.com/feulf/raintpl3/tree/master"
+            },
+            "time": "2018-06-08T21:19:55+00:00"
         },
         {
             "name": "robmorgan/phinx",
