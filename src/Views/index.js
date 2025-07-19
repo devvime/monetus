@@ -9,5 +9,4 @@ logout()
 page('/login', login);
 page('/dashboard/users', listUsers);
 
-// init routes
 page({ click: false });

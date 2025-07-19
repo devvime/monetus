@@ -1,10 +1,10 @@
 {
-    "name": "devvime/monetus",
+    "name": "devvime/pipu",
     "description": "PHP project for financial control",
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Monetus\\": "src/"
+            "Pipu\\": "src/"
         }
     },
     "authors": [
@@ -14,8 +14,8 @@
         }
     ],
     "scripts": {
-        "migration:create": "vendor/bin/phinx create",
-        "seed:create": "vendor/bin/phinx seed:create",
+        "create:migration": "vendor/bin/phinx create",
+        "create:seed": "vendor/bin/phinx seed:create",
         "migrate": "vendor/bin/phinx migrate",
         "migrate:seed": "vendor/bin/phinx seed:run"
     },
@@ -26,6 +26,6 @@
         "robmorgan/phinx": "^0.16.9",
         "firebase/php-jwt": "^6.11",
         "vlucas/phpdotenv": "^5.6",
-        "rain/raintpl": ">=3.0.0"
+        "mustache/mustache": "^3.0"
     }
 }

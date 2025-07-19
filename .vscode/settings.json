@@ -1,8 +1,23 @@
 {
+  "[javascript]": {
+    "editor.tabSize": 2,
+    "editor.formatOnSave": true,
+    "editor.insertSpaces": true
+  },
+  "[html]": {
+    "editor.tabSize": 2,
+    "editor.formatOnSave": true,
+    "editor.insertSpaces": true
+  },
+  "[php]": {
+    "editor.tabSize": 4,
+    "editor.formatOnSave": true,
+    "editor.insertSpaces": true
+  },
   "rest-client.environmentVariables": {
     "$shared": {
       "baseURL": "http://localhost:8080",
-      "token": "seu_token_aqui"
+      "token": "token_here"
     }
   }
 }

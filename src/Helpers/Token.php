@@ -1,6 +1,6 @@
 <?php
 
-namespace Monetus\Helpers;
+namespace Pipu\Helpers;
 
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;

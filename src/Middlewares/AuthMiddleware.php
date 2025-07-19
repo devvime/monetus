@@ -1,15 +1,15 @@
 <?php
 
-namespace Monetus\Guards;
+namespace Pipu\Middlewares;
 
-use Monetus\Helpers\Token;
+use Pipu\Helpers\Token;
 
-class AuthGuard
+class AuthMiddleware
 {
     public function verify($request, $response)
     {
         if (
-            isset($_SESSION['user']) && 
+            isset($_SESSION['user']) &&
             Token::decode($_SESSION['user'])
         ) {
             return true;

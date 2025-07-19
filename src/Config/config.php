@@ -1,15 +1,8 @@
 <?php
 
-use Rain\Tpl;
-
 define('ROOT', dirname(dirname(__DIR__)));
 
-Tpl::configure([
-    "tpl_dir" => ROOT . '/src/Views/',
-    "cache_dir" => ROOT . '/public/cache/'
-]);
-
-define('VIEW', new Tpl);
+define('VIEWS_DIR', __DIR__ . "/../Views");
 
 session_set_cookie_params([
     'lifetime' => 0,

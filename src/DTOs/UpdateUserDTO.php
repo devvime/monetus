@@ -1,6 +1,8 @@
 <?php
 
-namespace Monetus\DTOs;
+namespace Pipu\DTOs;
+
+use Pipu\Helpers\DTO;
 
 class UpdateUserDTO extends DTO
 {

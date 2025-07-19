@@ -1,65 +1,56 @@
 <?php
 
-namespace Monetus\Services;
+namespace Pipu\Services;
 
-use Monetus\Database\Database;
-use Monetus\Helpers\Token;
+use DomainException;
+use Pipu\Helpers\Token;
+use Pipu\Models\User;
 
 class AuthService
 {
-    public static function auth($request, $response)
+    public function __construct(
+        public User $user = new User()
+    ) {}
+
+    public function auth($request)
     {
-        $email = $request->body->email;
-        $password = $request->body->password;
-
-        $db = new Database();
-
         try {
-
-            $user = $db->connect()->get('users', '*', [
-                "email" => $email
+            $user = $this->user->findMany('*', [
+                "email" => $request->body->email
             ]);
-
-            if ($user === null) {
-                $response->json([
+            if (count($user) === 0) {
+                return [
                     "error" => true,
                     "status" => 301,
                     "message" => "Email or password incorrect."
-                ]);
+                ];
             }
-
-            if (password_verify($password, $user['password'])) {
-
+            if (password_verify(
+                $request->body->password,
+                $user['password']
+            )) {
                 $token = Token::encode([
                     "user_id" => $user['id'],
                     "user_name" => $user['name'],
                     "user_email" => $user['email']
                 ]);
-
                 $_SESSION['user'] = $token;
-
-                $response->json([
+                return [
                     "token" => $_SESSION['user']
-                ]);
-
-                return;
+                ];
             }
-        } catch (\Exception $e) {
-            $response->json([
-                "error" => true,
-                "status" => 301,
-                "message" => "Email or password incorrect."
-            ]);
+        } catch (DomainException $error) {
+            throw new DomainException($error);
         }
     }
 
-    public static function logout($request, $response)
+    public function logout()
     {
         unset($_SESSION['user']);
         session_destroy();
-        $response->json([
+        return [
             "success" => true,
             "message" => "Logout successfully"
-        ]);
+        ];
     }
 }

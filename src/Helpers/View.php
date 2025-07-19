@@ -1,21 +1,24 @@
 <?php
 
-namespace Monetus\Helpers;
+namespace Pipu\Helpers;
+
+use Error;
 
 class View
 {
-    public static function render(string $name, array $data = [])
+    public static function getFile(string $name): string
     {
-        self::setData($data);
-        VIEW->draw('layout/header');
-        VIEW->draw("$name");
-        VIEW->draw('layout/footer');
+        try {
+            $file = file_get_contents(VIEWS_DIR . "/{$name}.html");
+            return $file;
+        } catch (\Exception $err) {
+            throw new Error($err);
+        }
     }
 
-    public static function setData(array $data)
+    public static function render(string $name, array $data = [])
     {
-        foreach ($data as $key => $value) {
-            VIEW->assign($key, $value);
-        }
+        $m = new \Mustache\Engine(['entity_flags' => ENT_QUOTES]);
+        echo $m->render(self::getFile($name), $data);
     }
 }

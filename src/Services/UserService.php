@@ -1,162 +1,83 @@
 <?php
 
-namespace Monetus\Services;
+namespace Pipu\Services;
 
-use Monetus\Database\Database;
+use DomainException;
+use Pipu\Models\User;
 
 class UserService
 {
-    public static function registerUser($request, $response)
+    public function __construct(
+        public User $user = new User()
+    ) {}
+
+    public function registerUser($request, $response)
     {
-        $name = $request->body->name;
-        $email = $request->body->email;
-        $password = password_hash($request->body->password, PASSWORD_DEFAULT);
-
-        $db = new Database();
-
         try {
-            $db->connect()->insert('users', [
-                "name" => $name,
-                "email" => $email,
+            $password = password_hash($request->body->password, PASSWORD_DEFAULT);
+            $this->user->create([
+                "name" => $request->body->name,
+                "email" => $request->body->email,
                 "password" => $password
             ]);
-
-            $response->json([
+            return [
                 "status" => 200,
                 "message" => "User registered succesfully!"
-            ]);
-        } catch (\Exception $e) {
-            $response->json([
-                "error" => true,
-                "message" => "User registration failed.",
-                "exception" => $e
-            ]);
+            ];
+        } catch (DomainException $error) {
+            throw new DomainException($error);
         }
     }
 
-    public static function listAllUsers()
+    public function listAllUsers()
     {
-        $db = new Database();
-
         try {
-
-            $users = $db->connect()->select('users', [
-                'id',
-                'name',
-                'email',
-                'avatar',
-                'super_user',
-                'created_at',
-                'updated_at'
-            ]);
-
-            if ($users) {
-                return $users;
-            } else {
-                return [];
-            }
-        } catch (\Exception $error) {
-            echo json_encode([
-                "status" => 500,
-                "message" => "Error in users list",
-                "exception" => $error
-            ]);
+            $users = $this->user->getAll();
+            return $users;
+        } catch (DomainException $error) {
+            throw new DomainException($error);
         }
     }
 
-    public static function listUserById($id)
+    public function listUserById($id)
     {
-        $db = new Database();
-
         try {
-
-            $user = $db->connect()->select('users', [
-                'id',
-                'name',
-                'email',
-                'avatar',
-                'super_user',
-                'created_at',
-                'updated_at'
-            ], [
-                "id" => $id
-            ]);
-
+            $user = $this->user->getById($id);
             if ($user) {
-                echo json_encode($user);
-            } else {
-                echo json_encode([
-                    "status" => 404,
-                    "message" => "User not found."
-                ]);
+                return $user;
             }
-        } catch (\Exception $error) {
-            echo json_encode([
-                "status" => 500,
-                "message" => "Error in users list",
-                "exception" => $error
-            ]);
+            return [
+                "status" => 404,
+                "message" => "User not found."
+            ];
+        } catch (DomainException $error) {
+            throw new DomainException($error);
         }
     }
 
-    public static function updateUser($request, $response)
+    public function updateUser($request, $response)
     {
-        $db = new Database();
-
         try {
-
-            $result = $db->connect()->update('users', $request->body, [
-                "id" => $request->params['id']
-            ]);
-
-            if ($result) {
-                echo json_encode([
-                    "status" => 200,
-                    "message" => "User updated successfully!"
-                ]);
-            } else {
-                echo json_encode([
-                    "status" => 500,
-                    "message" => "Erro in user update."
-                ]);
-            }
-        } catch (\Exception $error) {
-            echo json_encode([
-                "status" => 500,
-                "message" => "Error in user update",
-                "exception" => $error
-            ]);
+            $this->user->update($request->params['id'], $request->body);
+            return [
+                "status" => 200,
+                "message" => "User updated successfully!"
+            ];
+        } catch (DomainException $error) {
+            throw new DomainException($error);
         }
     }
 
-    public static function deleteUser($id)
+    public function deleteUser($id)
     {
-        $db = new Database();
-
         try {
-
-            $result = $db->connect()->delete('users', [
-                "id" => $id
-            ]);
-
-            if ($result) {
-                echo json_encode([
-                    "status" => 200,
-                    "message" => "User deleted successfully."
-                ]);
-            } else {
-                echo json_encode([
-                    "status" => 500,
-                    "message" => "Error in user delete"
-                ]);
-            }
-
-        } catch (\Exception $error) {
-            echo json_encode([
-                "status" => 500,
-                "message" => "Error in user delete",
-                "exception" => $error
-            ]);
+            $this->user->delete($id);
+            return [
+                "status" => 200,
+                "message" => "User deleted successfully."
+            ];
+        } catch (DomainException $error) {
+            throw new DomainException($error);
         }
     }
 }

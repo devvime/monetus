@@ -1,6 +1,6 @@
 <?php
 
-namespace Monetus\Database;
+namespace Pipu\Database;
 
 use Medoo\Medoo;
 
