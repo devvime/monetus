@@ -1,7 +1,7 @@
 import { http } from "blots";
 import Swal from "sweetalert2";
 
-import { registerUser } from "./registerModal/script.js";
+import { registerUser } from "./registerModal/registerModal.js";
 
 export function login(ctx, next) {
   const loginForm = document.querySelector("#loginForm");

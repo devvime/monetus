@@ -15,7 +15,7 @@ class AuthService
     public function auth($request)
     {
         try {
-            $user = $this->user->findMany('*', [
+            $user = $this->user->find('*', [
                 "email" => $request->body->email
             ]);
             if (count($user) === 0) {

@@ -32,7 +32,9 @@ class UserService
     public function listAllUsers(array $filters = [])
     {
         try {
-            $users = $this->user->getAll(filters: $filters);
+            $page = !empty($filters['page']) ? $filters['page'] : 1;
+            $perPage = !empty($filters['perPage']) ? $filters['perPage'] : 5;
+            $users = $this->user->getAll(filters: $filters, page: $page, perPage: $perPage);
             return $users;
         } catch (DomainException $error) {
             throw new DomainException($error);

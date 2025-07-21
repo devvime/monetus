@@ -2,24 +2,32 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-4 offset-lg-4">
-        <h1 class="text-center">Login Page</h1>
         <div class="card bg-light">
           <div class="card-body">
+            <h1 class="text-center">Login Page</h1>
             <form id="loginForm">
-              <label>Email:</label>
-              <input
-                class="form-control mb-2"
-                type="email"
-                name="email"
-                placeholder="Email..."
-                required>
-              <label>Password:</label>
-              <input
-                class="form-control mb-2"
-                type="password"
-                name="password"
-                placeholder="Password..."
-                required>
+              <div class="input-group align-items-baseline">
+                <span class="input-group-text">
+                  <i class="bi bi-envelope-at-fill"></i>
+                </span>
+                <input
+                  class="form-control mb-2"
+                  type="email"
+                  name="email"
+                  placeholder="Email..."
+                  required>
+              </div>
+              <div class="input-group align-items-baseline">
+                <span class="input-group-text">
+                  <i class="bi bi-lock-fill"></i>
+                </span>
+                <input
+                  class="form-control mb-2"
+                  type="password"
+                  name="password"
+                  placeholder="Password..."
+                  required>
+              </div>
               <button
                 type="submit"
                 class="btn btn-primary"

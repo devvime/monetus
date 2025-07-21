@@ -1,8 +1,8 @@
 import { Router } from "blots";
 
-import { login } from "./pages/login/script.js";
-import { logout } from "./pages/dashboard/menu/script.js";
-import { listUsers } from "./pages/users/list/script.js";
+import { login } from "./pages/login/login.js";
+import { logout } from "./pages/dashboard/menu/menu.js";
+import { listUsers } from "./pages/users/list/list.js";
 
 logout();
 
