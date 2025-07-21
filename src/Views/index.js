@@ -1,12 +1,14 @@
-import page from "page";
+import { Router } from "blots";
 
-import { login } from "./login/script.js";
-import { logout } from "./dashboard/menu/script.js";
-import { listUsers } from "./users/list/script.js";
+import { login } from "./pages/login/script.js";
+import { logout } from "./pages/dashboard/menu/script.js";
+import { listUsers } from "./pages/users/list/script.js";
 
-logout()
+logout();
 
-page('/login', login);
-page('/dashboard/users', listUsers);
+const router = new Router();
 
-page({ click: false });
+router.add("/login", login);
+router.add("/dashboard/users", listUsers);
+
+router.resolve(false);

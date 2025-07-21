@@ -1,12 +1,16 @@
 {
   "scripts": {
-    "dev": "esbuild src/Views/index.js --bundle --minify --target=es2015 --outfile=public/js/index.js --watch"
+    "server": "php -S localhost:8080 -t public",
+    "esbuild": "esbuild src/Views/index.js --bundle --minify --target=es2015 --outfile=public/js/index.js --watch",
+    "dev": "concurrently \"npm run server\" \"npm run esbuild\""
   },
   "devDependencies": {
-    "esbuild": "^0.25.5"
+    "concurrently": "^9.2.0",
+    "esbuild": "^0.25.5",
+    "sass": "^1.89.2"
   },
   "dependencies": {
-    "page": "^1.11.6",
-    "sweetalert2": "^11.22.0"
+    "blots": "^2.0.21",
+    "sweetalert2": "^11.6.13"
   }
 }
