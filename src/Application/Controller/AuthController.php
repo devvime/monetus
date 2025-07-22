@@ -2,7 +2,6 @@
 
 namespace Pipu\Application\Controller;
 
-use Pipu\Http\Dto\RegisterUserDTO;
 use Pipu\Application\Service\UserService;
 use Pipu\Application\Service\AuthService;
 
@@ -21,7 +20,6 @@ class AuthController
 
     public function register($request, $response)
     {
-        RegisterUserDTO::validate($request->body);
         $result = $this->userService->registerUser($request, $response);
         $response->json($result);
     }
