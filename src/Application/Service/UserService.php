@@ -3,7 +3,7 @@
 namespace Pipu\Application\Service;
 
 use DomainException;
-use Pipu\Application\Model\User;
+use Pipu\Application\Repository\User;
 
 class UserService
 {

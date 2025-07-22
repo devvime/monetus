@@ -4,7 +4,7 @@ namespace Pipu\Shared;
 
 use Pipu\Shared\Database;
 
-class Model
+class Repository
 {
     public string $table;
     public array $fields;

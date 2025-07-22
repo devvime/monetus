@@ -4,7 +4,7 @@ namespace Pipu\Application\Service;
 
 use DomainException;
 use Pipu\Shared\Token;
-use Pipu\Application\Model\User;
+use Pipu\Application\Repository\User;
 
 class AuthService
 {

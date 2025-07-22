@@ -1,10 +1,10 @@
 <?php
 
-namespace Pipu\Application\Model;
+namespace Pipu\Application\Repository;
 
-use Pipu\Shared\Model;
+use Pipu\Shared\Repository;
 
-class User extends Model
+class User extends Repository
 {
 
     public string $table = 'users';

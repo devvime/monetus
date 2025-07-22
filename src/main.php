@@ -1,11 +1,12 @@
 <?php
 
 use Modularis\Router;
+use Pipu\Shared\Helper\RouteManager;
 
 $route = new Router();
 
-require_once dirname(__DIR__) . '/src/Http/Routes/views.php';
-require_once dirname(__DIR__) . '/src/Http/Routes/auth.php';
-require_once dirname(__DIR__) . '/src/Http/Routes/user.php';
+RouteManager::register($route, 'views');
+RouteManager::register($route, 'auth');
+RouteManager::register($route, 'user');
 
 $route->dispatch();
