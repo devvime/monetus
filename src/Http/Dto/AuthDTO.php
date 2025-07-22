@@ -2,19 +2,13 @@
 
 namespace Pipu\Http\Dto;
 
-use Pipu\Shared\DTO;
+use Pipu\Shared\Helper\Dto;
 
-class AuthDTO extends DTO
+class AuthDTO extends Dto
 {
-    public function __construct(
-        public string $email,
-        public string $password
-    ) {}
-
-    public static function validate(array | object $data)
-    {
-        self::isEmail('Email', $data->email);
-        self::required('password', $data->password);
-        self::obstruct('super_user', $data->super_user);
-    }
+    public array $allowed = ['email', 'password'];
+    public array $rules = [
+        'email' => ['required', 'email'],
+        'password' => ['required', ['length', 3, 20], 'alpha']
+    ];
 }

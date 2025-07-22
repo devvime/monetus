@@ -6,7 +6,7 @@ use Exception;
 
 class RouteManager
 {
-    public static function register($route, string $name)
+    public static function use($route, string $name)
     {
         try {
             require ROOT . "/src/Http/Routes/{$name}.php";

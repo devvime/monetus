@@ -3,6 +3,7 @@
 namespace Pipu\Http\Middleware;
 
 use Pipu\Shared\Token;
+use Pipu\Shared\Helper\Redirect;
 
 class AuthMiddleware
 {
@@ -14,11 +15,7 @@ class AuthMiddleware
         ) {
             return true;
         } else {
-            $response->json([
-                "status" => 301,
-                "message" => "Unauthorized access"
-            ]);
-            exit;
+            return Redirect::route('/login');
         }
     }
 }

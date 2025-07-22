@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "53305598d3c984d84f02d56c18a79b53",
+    "content-hash": "b3058df6c69264e92c13b5a43c917101",
     "packages": [
         {
             "name": "cakephp/chronos",
@@ -990,53 +990,6 @@
                 "source": "https://github.com/php-fig/simple-cache/tree/3.0.0"
             },
             "time": "2021-10-29T13:26:27+00:00"
-        },
-        {
-            "name": "rain/raintpl",
-            "version": "3.1.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/feulf/raintpl3.git",
-                "reference": "edee683bf242f40cc75bee46a78759f6c1589dca"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/feulf/raintpl3/zipball/edee683bf242f40cc75bee46a78759f6c1589dca",
-                "reference": "edee683bf242f40cc75bee46a78759f6c1589dca",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "4.4.*"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "Rain": "library/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Rain Community"
-                },
-                {
-                    "name": "Federico Ulfo",
-                    "email": "rainelemental@gmail.com"
-                }
-            ],
-            "description": "easy and fast template engine",
-            "homepage": "http://raintpl.com",
-            "support": {
-                "issues": "https://github.com/feulf/raintpl3/issues",
-                "source": "https://github.com/feulf/raintpl3/tree/master"
-            },
-            "time": "2018-06-08T21:19:55+00:00"
         },
         {
             "name": "robmorgan/phinx",
@@ -2079,6 +2032,65 @@
                 }
             ],
             "time": "2025-04-30T23:37:27+00:00"
+        },
+        {
+            "name": "vlucas/valitron",
+            "version": "v1.4.11",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/vlucas/valitron.git",
+                "reference": "fadce39f5f235755bb9794b2573af2d5bfcba85f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/vlucas/valitron/zipball/fadce39f5f235755bb9794b2573af2d5bfcba85f",
+                "reference": "fadce39f5f235755bb9794b2573af2d5bfcba85f",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.2"
+            },
+            "require-dev": {
+                "phpunit/phpunit": ">=4.8.35"
+            },
+            "suggest": {
+                "ext-mbstring": "It can support the multiple bytes string length."
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Valitron\\": "src/Valitron"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Vance Lucas",
+                    "email": "vance@vancelucas.com",
+                    "homepage": "https://www.vancelucas.com"
+                }
+            ],
+            "description": "Simple, elegant, stand-alone validation library with NO dependencies",
+            "homepage": "https://github.com/vlucas/valitron",
+            "keywords": [
+                "valid",
+                "validation",
+                "validator"
+            ],
+            "support": {
+                "issues": "https://github.com/vlucas/valitron/issues",
+                "source": "https://github.com/vlucas/valitron/tree/v1.4.11"
+            },
+            "funding": [
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/vlucas/valitron",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2022-10-14T11:54:24+00:00"
         }
     ],
     "packages-dev": [],

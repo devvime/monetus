@@ -18,7 +18,7 @@ class AuthService
             $user = $this->user->find('*', [
                 "email" => $request->body->email
             ]);
-            if (count($user) === 0) {
+            if (!$user) {
                 return [
                     "error" => true,
                     "status" => 301,

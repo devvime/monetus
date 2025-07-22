@@ -5,8 +5,8 @@ use Pipu\Shared\Helper\RouteManager;
 
 $route = new Router();
 
-RouteManager::register($route, 'views');
-RouteManager::register($route, 'auth');
-RouteManager::register($route, 'user');
+RouteManager::use($route, 'views');
+RouteManager::use($route, 'auth');
+RouteManager::use($route, 'user');
 
 $route->dispatch();
