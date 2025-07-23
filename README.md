@@ -32,16 +32,19 @@ cp .env.example .env
 Edit `.env` with your database and app configuration:
 
 ```env
-DATABASE_SERVER=redis
+DATABASE_SERVER=mysql
 DATABASE_TYPE=mysql
-DATABASE_NAME=app_db
-DATABASE_USER=root
-DATABASE_PASSWORD=secret
-EMAIL_HOST=smtp_host
-EMAIL_USER=user_mail
-EMAIL_PASSWORD=mail_password
-EMAIL_PORT=smtp_port
-SECRET=your_secret_here
+DATABASE_NAME=db_name
+DATABASE_USER=db_user
+DATABASE_PASSWORD=db_password
+DATABASE_PORT=3307
+
+EMAIL_HOST=smtp.mail.com
+EMAIL_USER=test@mail.com.br
+EMAIL_PASSWORD=mail_passwrod
+EMAIL_PORT=465
+
+SECRET=secret_here
 ```
 
 ---

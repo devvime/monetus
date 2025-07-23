@@ -15,7 +15,9 @@ class Database
             'database_name' => DATABASE_NAME,
             'server' => DATABASE_SERVER,
             'username' => DATABASE_USER,
-            'password' => DATABASE_PASSWORD
+            'password' => DATABASE_PASSWORD,
+            'port' => DATABASE_PORT,
+            'charset' => 'utf8mb4'
         ]);
     }
 

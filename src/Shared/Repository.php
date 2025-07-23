@@ -52,7 +52,7 @@ class Repository
         ]);
     }
 
-    public function find(array | string $fields = '', array $filter)
+    public function find(array | string $fields = '', array $filter = [])
     {
         if ($fields === '*') {
             return $this->db->connect()->get($this->table, $fields, $filter);

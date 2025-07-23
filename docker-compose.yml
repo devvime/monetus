@@ -4,6 +4,7 @@ services:
   nginx:
     image: nginx:latest
     container_name: nginx
+    restart: always
     ports:
       - "8080:80"
     volumes:
@@ -15,14 +16,26 @@ services:
   php:
     build: ./server/php
     container_name: php
+    restart: always
     volumes:
       - .:/var/www
     depends_on:
-      - redis
+      - db
     # user: "${UID:-1000}:${GID:-1000}"  # uncomment if needed for permissions
 
-  redis:
-    image: redis:alpine
-    container_name: redis
+  db:
+    image: mysql:8.0
+    container_name: mysql
+    restart: always
     ports:
-      - "6379:6379"
+      - "3307:3307"
+    environment:
+      MYSQL_ROOT_PASSWORD: pipu_secret
+      MYSQL_DATABASE: pipu_db
+      MYSQL_USER: pipu_user
+      MYSQL_PASSWORD: pipu_app_password
+    volumes:
+      - db_data:/var/lib/mysql
+
+volumes:
+  db_data:

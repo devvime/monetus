@@ -3,32 +3,44 @@
 namespace Pipu\Shared\Helper;
 
 use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 
 class Mailer
 {
-
-    public $mail;
+    protected $mail;
 
     public function __construct()
     {
-        $this->mail = new PHPMailer();
+        $this->mail = new PHPMailer(true);
         $this->mail->isSMTP();
         $this->mail->Host = EMAIL_HOST;
         $this->mail->Port = EMAIL_PORT;
         $this->mail->SMTPAuth = true;
         $this->mail->Username = EMAIL_USER;
         $this->mail->Password = EMAIL_PASSWORD;
+        $this->mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+        $this->mail->CharSet = 'UTF-8';
     }
 
-    public function send($data = [])
+    public function send(array $data): bool
     {
-        $this->mail->setFrom(EMAIL_USER, $data['title'] || $data['subject']);
-        $this->mail->Subject = $data['subject'];
-        $this->mail->AltBody = $data['altbody'];
-        foreach ($data['recipients']  as $recipient) {
-            $this->mail->addAddress($recipient['email'], $recipient['name']);
+        try {
+            $fromName = $data['title'] ?? $data['subject'] ?? 'Mailer';
+
+            $this->mail->setFrom(EMAIL_USER, $fromName);
+            $this->mail->Subject = $data['subject'] ?? '';
+            $this->mail->AltBody = $data['altbody'] ?? strip_tags($data['msgHTML'] ?? '');
+
+            foreach ($data['recipients'] ?? [] as $recipient) {
+                $this->mail->addAddress($recipient['email'], $recipient['name'] ?? '');
+            }
+
+            $this->mail->msgHTML($data['msgHTML'] ?? '');
+
+            return $this->mail->send();
+        } catch (Exception $e) {
+            error_log('Mailer error: ' . $this->mail->ErrorInfo);
+            return false;
         }
-        $this->mail->msgHTML($data['msgHTML']);
-        $this->mail->send();
     }
 }
