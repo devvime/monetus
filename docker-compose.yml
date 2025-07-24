@@ -21,6 +21,7 @@ services:
       - .:/var/www
     depends_on:
       - db
+      - redis
     # user: "${UID:-1000}:${GID:-1000}"  # uncomment if needed for permissions
 
   db:
@@ -30,12 +31,16 @@ services:
     ports:
       - "3307:3306"
     environment:
-      MYSQL_ROOT_PASSWORD: pipu_secret
-      MYSQL_DATABASE: pipu_db
-      MYSQL_USER: pipu_user
-      MYSQL_PASSWORD: pipu_app_password
+      MYSQL_ROOT_PASSWORD: ${DATABASE_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${DATABASE_NAME}
+      MYSQL_USER: ${DATABASE_USER}
+      MYSQL_PASSWORD: ${DATABASE_PASSWORD}
     volumes:
-      - db_data:/var/lib/mysql
+      - ./server/database:/var/lib/mysql
 
-volumes:
-  db_data:
+  redis:
+    image: redis:alpine
+    container_name: redis
+    restart: always
+    ports:
+      - "6380:6379"
