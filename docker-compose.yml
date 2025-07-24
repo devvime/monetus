@@ -28,7 +28,7 @@ services:
     container_name: mysql
     restart: always
     ports:
-      - "3307:3307"
+      - "3307:3306"
     environment:
       MYSQL_ROOT_PASSWORD: pipu_secret
       MYSQL_DATABASE: pipu_db

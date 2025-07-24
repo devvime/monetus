@@ -17,7 +17,7 @@ return
                 'name' => DATABASE_NAME,
                 'user' => DATABASE_USER,
                 'pass' => DATABASE_PASSWORD,
-                'port' => '3306',
+                'port' => DATABASE_PORT,
                 'charset' => 'utf8',
             ],
             'development' => [
@@ -26,7 +26,7 @@ return
                 'name' => DATABASE_NAME,
                 'user' => DATABASE_USER,
                 'pass' => DATABASE_PASSWORD,
-                'port' => '3306',
+                'port' => DATABASE_PORT,
                 'charset' => 'utf8',
             ],
             'testing' => [
@@ -35,7 +35,7 @@ return
                 'name' => DATABASE_NAME,
                 'user' => DATABASE_USER,
                 'pass' => DATABASE_PASSWORD,
-                'port' => '3306',
+                'port' => DATABASE_PORT,
                 'charset' => 'utf8',
             ]
         ],
