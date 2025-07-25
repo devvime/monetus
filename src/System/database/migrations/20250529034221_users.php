@@ -14,10 +14,10 @@ final class Users extends AbstractMigration
             ->addColumn('email', 'string')
             ->addIndex('email', ['unique' => true])
             ->addColumn('password', 'string')
-            ->addColumn('super_user', 'integer', ['default' => 0])
             ->addColumn('avatar', 'string')
-            ->addColumn('created_at', 'timestamp', ['default' => 'CURRENT_TIMESTAMP'])
-            ->addColumn('updated_at', 'timestamp', ['default' => 'CURRENT_TIMESTAMP'])
+            ->addColumn('super_user', 'boolean', ['default' => 0])
+            ->addColumn('active', 'boolean', ['default' => 0])
+            ->addTimestamps()
             ->create();
     }
 }
