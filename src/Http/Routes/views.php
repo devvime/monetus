@@ -3,10 +3,6 @@
 use Pipu\Application\Controller\ViewController;
 use Pipu\Http\Middleware\AuthMiddleware;
 
-use Pipu\Application\Service\TestMailerService;
-
-$route->get('/test/mailer', TestMailerService::class . '@execute');
-
 $route->get('/', ViewController::class . '@home');
 $route->get('/login', ViewController::class . '@login');
 
