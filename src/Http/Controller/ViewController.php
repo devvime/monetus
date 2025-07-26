@@ -25,6 +25,7 @@ class ViewController
         View::render('components/layout/header');
         View::render('pages/login/login');
         View::render('pages/login/registerModal/registerModal');
+        View::render('pages/login/recoverPasswordModal/recover-password-modal');
         View::render('components/layout/footer');
     }
 
