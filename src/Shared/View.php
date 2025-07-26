@@ -21,4 +21,10 @@ class View
         $m = new \Mustache\Engine(['entity_flags' => ENT_QUOTES]);
         echo $m->render(self::getFile($name), $data);
     }
+
+    public static function get(string $name, array $data = [])
+    {
+        $m = new \Mustache\Engine(['entity_flags' => ENT_QUOTES]);
+        return $m->render(self::getFile($name), $data);
+    }
 }

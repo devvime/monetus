@@ -5,11 +5,13 @@ namespace Pipu\Application\Service;
 use DomainException;
 use Pipu\Shared\Token;
 use Pipu\Application\Repository\User;
+use Pipu\Application\UseCase\User\SendActivationEmail;
 
 class AuthService
 {
     public function __construct(
-        public User $user = new User()
+        private User $user = new User(),
+        private SendActivationEmail $sendActivationEmail = new SendActivationEmail()
     ) {}
 
     public function auth($request)
@@ -21,8 +23,18 @@ class AuthService
             if (!$user) {
                 return [
                     "error" => true,
+                    "type" => "error",
                     "status" => 301,
                     "message" => "Email or password incorrect."
+                ];
+            }
+            if (!$user['active']) {
+                $this->sendActivationEmail->execute($user);
+                return [
+                    "error" => true,
+                    "type" => "warning",
+                    "status" => 301,
+                    "message" => "User is not active, access your email {$request->body->email} and active your account."
                 ];
             }
             if (password_verify(

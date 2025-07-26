@@ -2,7 +2,7 @@
 
 use Pipu\Http\Dto\RegisterUserDTO;
 use Pipu\Http\Dto\UpdateUserDTO;
-use Pipu\Application\Controller\UserController;
+use Pipu\Http\Controller\UserController;
 use Pipu\Http\Middleware\AuthMiddleware;
 
 $route->group('/api/user', AuthMiddleware::class . '@verify')

@@ -1,17 +1,14 @@
 <?php
 
-namespace Pipu\Application\Controller;
+namespace Pipu\Http\Controller;
 
 use Pipu\Application\Service\UserService;
 
 class UserController
 {
-    public UserService $userService;
-
-    public function __construct()
-    {
-        $this->userService = new UserService();
-    }
+    public function __construct(
+        private UserService $userService = new UserService()
+    ) {}
 
     public function index($request, $response)
     {

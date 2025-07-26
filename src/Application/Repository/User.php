@@ -17,4 +17,13 @@ class User extends Repository
         'created_at',
         'updated_at'
     ];
+
+    public function active(string $email)
+    {
+        return $this->db->connect()->update($this->table, [
+            "active" => true
+        ], [
+            "email" => $email
+        ]);
+    }
 }

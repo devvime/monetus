@@ -13,6 +13,7 @@ class Mailer
     {
         $this->mail = new PHPMailer(true);
         $this->mail->isSMTP();
+        $this->mail->isHTML(true);
         $this->mail->Host = EMAIL_HOST;
         $this->mail->Port = EMAIL_PORT;
         $this->mail->SMTPAuth = true;

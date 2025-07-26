@@ -1,6 +1,6 @@
 <?php
 
-namespace Pipu\Application\Controller;
+namespace Pipu\Http\Controller;
 
 use Pipu\Application\Service\UserService;
 use Pipu\Application\Service\AuthService;

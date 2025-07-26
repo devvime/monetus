@@ -1,10 +1,11 @@
 <?php
 
-use Pipu\Application\Controller\ViewController;
+use Pipu\Http\Controller\ViewController;
 use Pipu\Http\Middleware\AuthMiddleware;
 
 $route->get('/', ViewController::class . '@home');
 $route->get('/login', ViewController::class . '@login');
+$route->get('/account/active/{token}', ViewController::class . '@activeAccount');
 
 $route->group('/dashboard', AuthMiddleware::class . '@verify')
     ->init()

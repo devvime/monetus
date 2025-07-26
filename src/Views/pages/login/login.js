@@ -23,7 +23,7 @@ async function sendLogin(data) {
   await http.post("/api/auth", data).then((res) => {
     if (res.error) {
       Swal.fire({
-        icon: "error",
+        icon: res.type || "error",
         title: "Ops",
         text: res.message,
       });

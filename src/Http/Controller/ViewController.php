@@ -1,12 +1,18 @@
 <?php
 
-namespace Pipu\Application\Controller;
+namespace Pipu\Http\Controller;
 
 use Pipu\Shared\View;
 use Pipu\Application\Service\UserService;
+use Pipu\Application\UseCase\User\ActiveAccount;
 
 class ViewController
 {
+    public function __construct(
+        private ActiveAccount $activeAccount = new ActiveAccount(),
+        private UserService $userService = new UserService()
+    ) {}
+
     public function home($request, $response)
     {
         View::render('components/layout/header');
@@ -22,6 +28,14 @@ class ViewController
         View::render('components/layout/footer');
     }
 
+    public function activeAccount($request, $response)
+    {
+        $this->activeAccount->execute($request->params['token']);
+        View::render('components/layout/header');
+        View::render('pages/login/activeAccount/active-account');
+        View::render('components/layout/footer');
+    }
+
     public function dashboard($request, $response)
     {
         View::render('components/layout/header');
@@ -32,8 +46,7 @@ class ViewController
 
     public function users($request, $response)
     {
-        $userService = new UserService();
-        $result = $userService->listAllUsers($request->query);
+        $result = $this->userService->listAllUsers($request->query);
         View::render('components/layout/header');
         View::render('pages/dashboard/menu/menu');
         View::render('pages/users/list/list', $result);

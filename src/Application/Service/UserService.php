@@ -4,25 +4,29 @@ namespace Pipu\Application\Service;
 
 use DomainException;
 use Pipu\Application\Repository\User;
+use Pipu\Application\UseCase\User\SendActivationEmail;
 
 class UserService
 {
     public function __construct(
-        public User $user = new User()
+        public User $user = new User(),
+        private SendActivationEmail $sendActivationEmail = new SendActivationEmail()
     ) {}
 
     public function registerUser($request, $response)
     {
         try {
             $password = password_hash($request->body->password, PASSWORD_DEFAULT);
-            $this->user->create([
+            $user = [
                 "name" => $request->body->name,
                 "email" => $request->body->email,
                 "password" => $password
-            ]);
+            ];
+            $this->user->create($user);
+            $this->sendActivationEmail->execute($user);
             return [
                 "status" => 200,
-                "message" => "User registered succesfully!"
+                "message" => "User registered succesfull!"
             ];
         } catch (DomainException $error) {
             throw new DomainException($error);
